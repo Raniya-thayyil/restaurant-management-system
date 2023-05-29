@@ -1,11 +1,17 @@
 package restaurantsystem;
 
+<<<<<<< HEAD
 import java.util.HashMap;
+=======
+import java.util.ArrayList;
+>>>>>>> f6656e8 (items added)
 
 public class Restaurant {
 
     private String name;
     private Menu menu;
+    
+    ArrayList<Order> orders = new ArrayList<>();
 
     HashMap<Customer, Order> orders = new HashMap<>();
 

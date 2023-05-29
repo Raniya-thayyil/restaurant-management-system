@@ -14,8 +14,13 @@ public class Bag {
 
     public double getTotalprice() {
         double totalPrice = 0;
-        for (ItemToOrder items : this.itemstoOrder) {
-            totalPrice += items.getItem().getPrice() * items.getnumberOfItem();
+        // for (FoodItem items : this.itemstoOrder) {
+        //     totalPrice += items.getPrice();
+        // }
+        
+        for (Entry<FoodItem, Integer> item : items.entrySet()) {
+            totalPrice += item.getValue() * item.getKey().getPrice();
+            
         }
 
         return totalPrice;

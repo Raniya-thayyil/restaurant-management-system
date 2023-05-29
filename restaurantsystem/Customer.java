@@ -44,10 +44,7 @@ public class Customer {
         this.gender = gender;
     }
 
-    public boolean orderFood(Restaurant restaurant, Bag bag) {
-        if (bag.itemstoOrder.isEmpty()) {
-            return false;
-        }
+    public Order orderFood(Restaurant restaurant, Bag bag) {
         Order order = new Order();
 
         order.orderItems.add(bag);
@@ -56,9 +53,9 @@ public class Customer {
         order.setNumberOfItems(bag.getTotalQuantity());
 
         this.Orders.add(order);
-        restaurant.orders.put(this, order);
-
-        return true;
+        restaurant.orders.add(order);
+        
+        return order;
 
     }
 
@@ -66,23 +63,14 @@ public class Customer {
         return bag;
     }
 
-    public boolean AddItems(Bag bag, Restaurant restaurant, ItemToOrder itemsToOrderdetail) {
-        if (itemsToOrderdetail.customer != this) {
-            return false;
-        }
+    public boolean AddItems(Bag bag, Restaurant restaurant, FoodItem item, int quantity) {
 
-        if (restaurant.getMenu().nonvegItems.contains(itemsToOrderdetail.getItem())
-                || restaurant.getMenu().vegItems.contains(itemsToOrderdetail.getItem())) {
-            bag.itemstoOrder.add(itemsToOrderdetail);
+        if (restaurant.getMenu().nonvegItems.contains(item) || restaurant.getMenu().vegItems.contains(item)) {
+            bag.items.put(item, quantity);
             return true;
         }
         return false;
 
-    }
-
-    @Override
-    public String toString() {
-        return "Customer [name=" + name + ", contact=" + contact + "]";
     }
 
 }
