@@ -1,16 +1,12 @@
 package restaurantsystem;
 
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map.Entry;
 
 public class Bag {
 
     Customer customer;
 
-    // ArrayList<FoodItem> itemstoOrder = new ArrayList<>();
-    HashMap<FoodItem, Integer> items = new HashMap<>();
+    ArrayList<ItemToOrder> itemstoOrder = new ArrayList<>();
 
     public Bag(Customer customer) {
         this.customer = customer;
@@ -18,21 +14,19 @@ public class Bag {
 
     public double getTotalprice() {
         double totalPrice = 0;
-        // for (FoodItem items : this.itemstoOrder) {
-        //     totalPrice += items.getPrice();
-        // }
-        for (Entry<FoodItem, Integer> item : items.entrySet()) {
-            totalPrice += item.getValue() * item.getKey().getPrice();
-            
+        for (ItemToOrder items : this.itemstoOrder) {
+            totalPrice += items.getItem().getPrice() * items.getnumberOfItem();
         }
 
         return totalPrice;
     }
+
     public int getTotalQuantity() {
         int totalItems = 0;
-        for (Entry<FoodItem, Integer> item : items.entrySet()) {
-            totalItems += item.getValue();
-            
+
+        for (ItemToOrder items : this.itemstoOrder) {
+            totalItems += items.getnumberOfItem();
+
         }
         return totalItems;
 
@@ -40,11 +34,7 @@ public class Bag {
 
     @Override
     public String toString() {
-        return "[items:" +  items + "]";
+        return "[items:" + itemstoOrder + "]";
     }
-
-    
-
-
 
 }
