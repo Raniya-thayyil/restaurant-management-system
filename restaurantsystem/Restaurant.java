@@ -1,9 +1,13 @@
 package restaurantsystem;
 
+import java.util.ArrayList;
+
 public class Restaurant {
 
     private String name;
     private Menu menu;
+    
+    ArrayList<Order> orders = new ArrayList<>();
 
     public Restaurant(String name, Menu menu) {
         this.name = name;

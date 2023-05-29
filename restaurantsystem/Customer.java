@@ -41,34 +41,33 @@ public class Customer {
         this.gender = gender;
     }
 
-    public Order orderFood(Bag bag) {         
-        
+    public Order orderFood(Restaurant restaurant, Bag bag) {
         Order order = new Order();
+
         order.orderItems.add(bag);
         order.setStatus("order placed");
         order.setTotalPrice(bag.getTotalprice());
         order.setNumberOfItems(bag.getTotalQuantity());
+
         this.Orders.add(order);
+        restaurant.orders.add(order);
+        
         return order;
 
     }
-
-   
 
     public Bag getBag() {
         return bag;
     }
 
-    public void AddItems(Bag bag, Restaurant restaurant, FoodItem item, int quantity) {
-        
+    public boolean AddItems(Bag bag, Restaurant restaurant, FoodItem item, int quantity) {
+
         if (restaurant.getMenu().nonvegItems.contains(item) || restaurant.getMenu().vegItems.contains(item)) {
             bag.items.put(item, quantity);
+            return true;
         }
-       
+        return false;
+
     }
 
-    
-
-
-    
 }

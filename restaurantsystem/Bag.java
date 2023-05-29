@@ -21,6 +21,7 @@ public class Bag {
         // for (FoodItem items : this.itemstoOrder) {
         //     totalPrice += items.getPrice();
         // }
+        
         for (Entry<FoodItem, Integer> item : items.entrySet()) {
             totalPrice += item.getValue() * item.getKey().getPrice();
             
