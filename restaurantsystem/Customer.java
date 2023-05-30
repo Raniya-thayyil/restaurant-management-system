@@ -55,9 +55,9 @@ public class Customer {
         order.setTotalPrice(bag.getTotalprice());
         order.setNumberOfItems(bag.getTotalQuantity());
 
-        this.Orders.add(order);        
+        this.Orders.add(order);
         restaurant.orders.put(this, order);
-        
+
         return true;
 
     }
@@ -71,7 +71,8 @@ public class Customer {
             return false;
         }
 
-        if (restaurant.getMenu().nonvegItems.contains(itemsToOrderdetail.getItem()) || restaurant.getMenu().vegItems.contains(itemsToOrderdetail.getItem())) {
+        if (restaurant.getMenu().nonvegItems.contains(itemsToOrderdetail.getItem())
+                || restaurant.getMenu().vegItems.contains(itemsToOrderdetail.getItem())) {
             bag.itemstoOrder.add(itemsToOrderdetail);
             return true;
         }
@@ -83,7 +84,5 @@ public class Customer {
     public String toString() {
         return "Customer [name=" + name + ", contact=" + contact + "]";
     }
-
-    
 
 }

@@ -26,12 +26,12 @@ public class Main {
         arun.AddItems(arunsBag, wilton, chickenNoodles);
         ItemToOrder vegPasta = new ItemToOrder(arun, pasta, 1);
         arun.AddItems(arunsBag, wilton, vegPasta);        
+        arun.orderFood(wilton, arunsBag);
+
         ItemToOrder cb = new ItemToOrder(tina, chickenBiriyani, 2);
         tina.AddItems(tinasBag, wilton, cb);
-
-
-        arun.orderFood(wilton, arunsBag);
-        // tina.AddItems(tinasBag, wilton, pasta, 2);
+        ItemToOrder pastas = new ItemToOrder(tina, pasta, 2);
+        tina.AddItems(tinasBag, wilton, pastas);
         tina.orderFood(wilton, tinasBag);
 
         System.out.println("tina's order: " + tina.Orders);
