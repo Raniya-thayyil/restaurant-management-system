@@ -8,16 +8,16 @@ public class Customer {
     private String gender;
     private String contact;
 
-    private Bag bag;
+    private Cart bag;
 
-    ArrayList<Order> Orders = new ArrayList<>();
-    ArrayList<FoodItem> itemsToOrder = new ArrayList<>();
+    ArrayList<Order> orders = new ArrayList<>();
 
     public Customer(String name, int age, String gender, String contact) {
         this.name = name;
         this.age = age;
         this.gender = gender;
         this.contact = contact;
+        this.bag = new Cart(this);
     }
 
     public String getName() {
@@ -44,39 +44,41 @@ public class Customer {
         this.gender = gender;
     }
 
-    public boolean orderFood(Restaurant restaurant, Bag bag) {
-        if (bag.itemstoOrder.isEmpty()) {
-            return false;
-        }
-        Order order = new Order();
-
-        order.orderItems.add(bag);
-        order.setStatus("order placed");
-        order.setTotalPrice(bag.getTotalprice());
-        order.setNumberOfItems(bag.getTotalQuantity());
-
-        this.Orders.add(order);        
-        restaurant.orders.put(this, order);
-        
-        return true;
-
+    public String getContact() {
+        return contact;
     }
 
-    public Bag getBag() {
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public void setBag(Cart bag) {
+        this.bag = bag;
+    }
+
+    public Cart getBag() {
         return bag;
     }
 
-    public boolean AddItems(Bag bag, Restaurant restaurant, ItemToOrder itemsToOrderdetail) {
-        if (itemsToOrderdetail.customer != this) {
+    public boolean addItems(Restaurant restaurant, FoodItem food, int numberOfItems) {
+
+        ItemToOrder itemToOrder = new ItemToOrder(food, numberOfItems);
+        if (!restaurant.getMenu().menu.contains(food)) {
             return false;
         }
+        this.bag.itemstoOrder.add(itemToOrder);
+        return true;
+    }
 
-        if (restaurant.getMenu().nonvegItems.contains(itemsToOrderdetail.getItem()) || restaurant.getMenu().vegItems.contains(itemsToOrderdetail.getItem())) {
-            bag.itemstoOrder.add(itemsToOrderdetail);
-            return true;
-        }
-        return false;
+    public void orderFood(Restaurant restaurant) {
+        Order order = new Order(this);
 
+        order.orderItems = this.bag.itemstoOrder;
+        order.setStatus("order placed");
+
+        restaurant.orderDetails.add(order);
+
+        this.orders.add(order);
     }
 
     @Override

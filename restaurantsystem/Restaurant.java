@@ -1,7 +1,6 @@
 package restaurantsystem;
 
-
-import java.util.HashMap;
+import java.util.ArrayList;
 
 import java.util.ArrayList;
 
@@ -12,8 +11,8 @@ public class Restaurant {
 
     private String name;
     private Menu menu;
-
-    HashMap<Customer, Order> orders = new HashMap<>();
+   
+    ArrayList<Order> orderDetails = new ArrayList<>();
 
 
     public Restaurant(String name, Menu menu) {
@@ -38,15 +37,14 @@ public class Restaurant {
     }
 
     public boolean deliverOrderBy(Customer customer) {
-        if (customer.Orders.isEmpty()) {
+        if (customer.orders.isEmpty()) {
             return false;
 
         }
-        for (Order order : customer.Orders) {
+        for (Order order : customer.orders) {
             order.setStatus("order delivered");
         }
         return true;
-
     }
 
 }

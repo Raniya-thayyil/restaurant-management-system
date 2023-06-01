@@ -1,36 +1,33 @@
 package restaurantsystem;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Order {
-   
-    private int numberOfItems;
-    private double totalPrice;
+
+    private Customer customer;
     private String status;
 
-    Random random = new Random();
+    ArrayList<ItemToOrder> orderItems = new ArrayList<>();
 
-    ArrayList<Bag> orderItems = new ArrayList<>();
-
-    public Order() {        
-        
+    public Order(Customer customer) {
+        this.customer = customer;
     }
 
-    public int getNumberOfItems() {
-        return numberOfItems;
+    public int getTotalQuantity() {
+        int totalItems = 0;
+
+        for (ItemToOrder items : this.orderItems) {
+            totalItems += items.getnumberOfItem();
+        }
+        return totalItems;
     }
 
-    public void setNumberOfItems(int numberOfItems) {
-        this.numberOfItems = numberOfItems;
-    }
-
-    public double getTotalPrice() {
+    public double getTotalprice() {
+        double totalPrice = 0;
+        for (ItemToOrder items : this.orderItems) {
+            totalPrice += items.getItem().getPrice() * items.getnumberOfItem();
+        }
         return totalPrice;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
     }
 
     public String getStatus() {
@@ -41,19 +38,19 @@ public class Order {
         this.status = status;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
     @Override
     public String toString() {
-        return "Order [numberOfItems=" + numberOfItems + ", totalPrice=" + totalPrice + ", status=" + status
+        return "Order [ Customer=" + this.getCustomer() + ", numberOfItems=" + this.getTotalQuantity() + ", totalPrice="
+                + this.getTotalprice() + ", status=" + status
                 + ", orderItems=" + orderItems + "]";
     }
 
-    
- 
-  
-    
-
-    
-
-    
-    
 }

@@ -4,14 +4,14 @@ public class FoodItem {
 
     private String name;
     private double price;
-    private double quantity;
-    private String category;
+    private String quantity;   
+    private boolean isNonVeg;
 
-    public FoodItem(String name, double price, double quantity, String category) {
+    public FoodItem(String name, double price, String quantity, boolean isNonVeg) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
-        this.category = category;
+        this.isNonVeg = isNonVeg;
     }
 
     public String getName() {
@@ -30,27 +30,25 @@ public class FoodItem {
         this.price = price;
     }
 
-    public double getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(double quantity) {
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
+    }   
+
+    public boolean isNonVeg() {
+        return isNonVeg;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
+    public void setNonVeg(boolean isNonVeg) {
+        this.isNonVeg = isNonVeg;
     }
 
     @Override
     public String toString() {
-        return "FoodItem [name=" + name + ", price=" + price + ", quantity=" + quantity + ", category=" + category
+        return "FoodItem [name=" + name + ", price=" + price + ", quantity=" + quantity + ", isNonVeg=" + isNonVeg
                 + "]";
-    }   
-
-    
+    }    
 }

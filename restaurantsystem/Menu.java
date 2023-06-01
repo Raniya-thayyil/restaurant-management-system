@@ -3,26 +3,32 @@ package restaurantsystem;
 import java.util.ArrayList;
 
 public class Menu {
-
-    ArrayList<FoodItem> vegItems = new ArrayList<>();
-    ArrayList<FoodItem> nonvegItems = new ArrayList<>();
+        
+    ArrayList<FoodItem> menu = new ArrayList<>();
 
     public void addItems(FoodItem item) {
-        if (item.getCategory() == "veg") {
-            this.vegItems.add(item);
-        }
-        else {
-            this.nonvegItems.add(item);
-        }
+        menu.add(item);
+    }
 
+    public void getVegItems() {
+        for (FoodItem food : this.menu) {
+            if (!food.isNonVeg()) {
+                System.out.println(food);
+            }
+        }
+    }
+
+    public void getNonVegItems() {
+        for (FoodItem food : this.menu) {
+            if (food.isNonVeg()) {
+                System.out.println(food);
+            }
+        }
     }
 
     @Override
     public String toString() {
-        return "Menu [vegItems=" + vegItems + ", nonvegItems=" + nonvegItems + "]";
-    }
+        return "Menu [menu=" + menu + "]";
+    }   
 
-    
-
-    
 }

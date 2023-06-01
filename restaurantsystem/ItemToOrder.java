@@ -2,14 +2,12 @@ package restaurantsystem;
 
 public class ItemToOrder {
 
-    FoodItem item;
-    Customer customer;
+    FoodItem item;  
     int numberOfItem;
 
-    public ItemToOrder(Customer customer, FoodItem item, int numberOfItem) {
+    public ItemToOrder(FoodItem item, int numberOfItem) {
         this.item = item;
-        this.numberOfItem = numberOfItem;
-        this.customer = customer;
+        this.numberOfItem = numberOfItem;        
     }
 
     public FoodItem getItem() {
