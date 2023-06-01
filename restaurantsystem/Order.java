@@ -1,33 +1,30 @@
 package restaurantsystem;
 
-import java.util.ArrayList;
+enum OrderStatus {
+    ORDER_PLACED("order placed"),
+    ORDER_DELIVERED("order delivered");
 
-public class Order {
+    private String orderStatus;
 
-    private Customer customer;
+    OrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+}
+
+public class Order extends BaseCart {
     private String status;
-
-    ArrayList<ItemToOrder> orderItems = new ArrayList<>();
 
     public Order(Customer customer) {
         this.customer = customer;
-    }
-
-    public int getTotalQuantity() {
-        int totalItems = 0;
-
-        for (ItemToOrder items : this.orderItems) {
-            totalItems += items.getnumberOfItem();
-        }
-        return totalItems;
-    }
-
-    public double getTotalprice() {
-        double totalPrice = 0;
-        for (ItemToOrder items : this.orderItems) {
-            totalPrice += items.getItem().getPrice() * items.getnumberOfItem();
-        }
-        return totalPrice;
     }
 
     public String getStatus() {
@@ -38,19 +35,10 @@ public class Order {
         this.status = status;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
     @Override
     public String toString() {
         return "Order [ Customer=" + this.getCustomer() + ", numberOfItems=" + this.getTotalQuantity() + ", totalPrice="
                 + this.getTotalprice() + ", status=" + status
                 + ", orderItems=" + orderItems + "]";
     }
-
 }

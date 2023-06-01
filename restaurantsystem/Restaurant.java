@@ -11,7 +11,7 @@ public class Restaurant {
 
     private String name;
     private Menu menu;
-   
+
     ArrayList<Order> orderDetails = new ArrayList<>();
 
 
@@ -42,7 +42,7 @@ public class Restaurant {
 
         }
         for (Order order : customer.orders) {
-            order.setStatus("order delivered");
+            order.setStatus(OrderStatus.ORDER_DELIVERED.getOrderStatus());
         }
         return true;
     }

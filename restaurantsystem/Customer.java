@@ -60,21 +60,11 @@ public class Customer {
         return bag;
     }
 
-    public boolean addItems(Restaurant restaurant, FoodItem food, int numberOfItems) {
-
-        ItemToOrder itemToOrder = new ItemToOrder(food, numberOfItems);
-        if (!restaurant.getMenu().menu.contains(food)) {
-            return false;
-        }
-        this.bag.itemstoOrder.add(itemToOrder);
-        return true;
-    }
-
     public void orderFood(Restaurant restaurant) {
         Order order = new Order(this);
 
-        order.orderItems = this.bag.itemstoOrder;
-        order.setStatus("order placed");
+        order.orderItems = this.bag.orderItems;
+        order.setStatus(OrderStatus.ORDER_PLACED.getOrderStatus());
 
         restaurant.orderDetails.add(order);
 

@@ -3,7 +3,7 @@ package restaurantsystem;
 import java.util.ArrayList;
 
 public class Menu {
-        
+
     ArrayList<FoodItem> menu = new ArrayList<>();
 
     public void addItems(FoodItem item) {
@@ -29,6 +29,6 @@ public class Menu {
     @Override
     public String toString() {
         return "Menu [menu=" + menu + "]";
-    }   
+    }
 
 }
