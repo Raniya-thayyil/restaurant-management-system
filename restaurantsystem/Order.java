@@ -1,59 +1,29 @@
 package restaurantsystem;
 
-import java.util.ArrayList;
-import java.util.Random;
+enum OrderStatus {
+    ORDER_PLACED,
+    ORDER_DELIVERED
+}
 
-public class Order {
-   
-    private int numberOfItems;
-    private double totalPrice;
-    private String status;
+public class Order extends BaseCart {
+    private OrderStatus status;
 
-    Random random = new Random();
-
-    ArrayList<Bag> orderItems = new ArrayList<>();
-
-    public Order() {        
-        
+    public Order(Customer customer) {
+        this.customer = customer;
     }
 
-    public int getNumberOfItems() {
-        return numberOfItems;
-    }
-
-    public void setNumberOfItems(int numberOfItems) {
-        this.numberOfItems = numberOfItems;
-    }
-
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public String getStatus() {
+    public OrderStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(OrderStatus status) {
         this.status = status;
     }
 
     @Override
     public String toString() {
-        return "Order [numberOfItems=" + numberOfItems + ", totalPrice=" + totalPrice + ", status=" + status
+        return "Order [ Customer=" + this.getCustomer() + ", numberOfItems=" + this.getTotalQuantity() + ", totalPrice="
+                + this.getTotalprice() + ", status=" + status
                 + ", orderItems=" + orderItems + "]";
     }
-
-    
- 
-  
-    
-
-    
-
-    
-    
 }
