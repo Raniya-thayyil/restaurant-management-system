@@ -1,37 +1,22 @@
 package restaurantsystem;
 
 enum OrderStatus {
-    ORDER_PLACED("order placed"),
-    ORDER_DELIVERED("order delivered");
-
-    private String orderStatus;
-
-    OrderStatus(String orderStatus) {
-        this.orderStatus = orderStatus;
-    }
-
-    public String getOrderStatus() {
-        return orderStatus;
-    }
-
-    public void setOrderStatus(String orderStatus) {
-        this.orderStatus = orderStatus;
-    }
-
+    ORDER_PLACED,
+    ORDER_DELIVERED
 }
 
 public class Order extends BaseCart {
-    private String status;
+    private OrderStatus status;
 
     public Order(Customer customer) {
         this.customer = customer;
     }
 
-    public String getStatus() {
+    public OrderStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(OrderStatus status) {
         this.status = status;
     }
 

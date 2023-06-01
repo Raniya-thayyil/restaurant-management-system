@@ -64,7 +64,7 @@ public class Customer {
         Order order = new Order(this);
 
         order.orderItems = this.bag.orderItems;
-        order.setStatus(OrderStatus.ORDER_PLACED.getOrderStatus());
+        order.setStatus(OrderStatus.ORDER_PLACED);
 
         restaurant.orderDetails.add(order);
 

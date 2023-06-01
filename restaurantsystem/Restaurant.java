@@ -42,7 +42,7 @@ public class Restaurant {
 
         }
         for (Order order : customer.orders) {
-            order.setStatus(OrderStatus.ORDER_DELIVERED.getOrderStatus());
+            order.setStatus(OrderStatus.ORDER_DELIVERED);
         }
         return true;
     }

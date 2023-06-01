@@ -9,15 +9,14 @@ public class Main {
 
         Menu wiltonMenu = new Menu();
 
-        Quantities half = Quantities.HALF;
 
-        FoodItem chickenBiriyani = new FoodItem("chicken Biriyani", 100, half.getMeasure(), true);
+        FoodItem chickenBiriyani = new FoodItem("chicken Biriyani", 100, Quantity.HALF, true);
         wiltonMenu.addItems(chickenBiriyani);
-        FoodItem friedRice = new FoodItem("Veg fried rice", 150, Quantities.FULL.getMeasure(), false);
+        FoodItem friedRice = new FoodItem("Veg fried rice", 150, Quantity.FULL, false);
         wiltonMenu.addItems(friedRice);
-        FoodItem noodles = new FoodItem("Chicken noodles", 200, Quantities.HALF.getMeasure(), true);
+        FoodItem noodles = new FoodItem("Chicken noodles", 200, Quantity.HALF, true);
         wiltonMenu.addItems(noodles);
-        FoodItem pasta = new FoodItem("Veg pasta", 300, Quantities.FULL.getMeasure(), false);
+        FoodItem pasta = new FoodItem("Veg pasta", 300, Quantity.FULL, false);
         wiltonMenu.addItems(pasta);
 
         Restaurant wilton = new Restaurant("Wilton", wiltonMenu);

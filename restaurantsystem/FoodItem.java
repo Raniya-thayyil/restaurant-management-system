@@ -1,43 +1,22 @@
 package restaurantsystem;
 
-enum Quantities {
-
-    FULL("Full"),
-    HALF("Half"),
-    QUARTER("Quarter");
-
-    private String measure;
-
-    private Quantities(String measure) {
-        this.measure = measure;
-
-    }
-
-    public String getMeasure() {
-        return measure;
-    }
-
-    public void setMeasure(String measure) {
-        this.measure = measure;
-    }
-
+enum Quantity {
+    FULL,
+    HALF,
+    QUARTER
 }
 
 public class FoodItem {
 
     private String name;
-    private double price;
-    private String quantity;
-    // private enum quantities {FULL, HALF, QUARTER}
-    // private quantities aQuantities;
-    Quantities quantity1;
-
+    private double price;  
+    Quantity quantity;
     private boolean isNonVeg;
 
-    public FoodItem(String name, double price, String quantity, boolean isNonVeg) {
+    public FoodItem(String name, double price, Quantity quantity, boolean isNonVeg) {
         this.name = name;
         this.price = price;
-        // this.aQuantities = aQuantities;
+       
         this.quantity = quantity;
         this.isNonVeg = isNonVeg;
     }
@@ -58,11 +37,11 @@ public class FoodItem {
         this.price = price;
     }
 
-    public String getQuantity() {
+    public Quantity getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(Quantity quantity) {
         this.quantity = quantity;
     }
 
